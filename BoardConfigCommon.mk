@@ -36,7 +36,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 2004621312
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_HAS_NO_SELECT_BUTTON := true
-#BOARD_TOUCH_RECOVERY := true
+BOARD_RECOVERY_SWIPE := true
 BOARD_CUSTOM_GRAPHICS := ../../../device/lge/iprj-common/recovery-gfx.c
 TARGET_USERIMAGES_USE_EXT4 := true
 
@@ -87,6 +87,7 @@ BOARD_HAVE_BACK_MIC_CAMCORDER := true
 
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DQCOM_ACDB_ENABLED
 BOARD_NEEDS_MEMORYHEAPPMEM := true
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 ## This is evil. The mt9m114 (FFC) data inside the liboemcamera blob is in the .bss section,
 ## and inaccessible if PIE is enabled
@@ -111,32 +112,24 @@ BOARD_SEPOLICY_DIRS += \
         device/lge/iprj-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-        genfs_contexts \
-        file_contexts \
-	property_contexts \
-	te_macros \
+	genfs_contexts \
+	app.te \
 	bluetooth.te \
-	camera.te \
 	device.te \
-	dhcp.te \
 	domain.te \
 	drmserver.te \
 	file.te \
-	kickstart.te \
-	init.te \
+	file_contexts \
+	hci_init.te \
+	init_hell.te \
+	keystore.te \
 	mediaserver.te \
-	mpdecision.te \
-	netmgrd.te \
-	property.te \
-	qmux.te \
+	kickstart.te \
 	rild.te \
-	rmt.te \
-	sensors.te \
 	surfaceflinger.te \
 	system.te \
-	tee.te \
-	thermald.te \
 	ueventd.te \
-	wpa_supplicant.te
+	wpa.te
 
 BOARD_HARDWARE_CLASS := device/lge/iprj-common/cmhw/
+

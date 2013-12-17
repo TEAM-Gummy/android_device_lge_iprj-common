@@ -30,13 +30,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/boot_logo_00000.rle:root/bootimages/boot_logo_00000.rle \
     $(LOCAL_PATH)/prebuilt/init.qcom.sh:root/init.qcom.sh \
     $(LOCAL_PATH)/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/prebuilt/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
-    $(LOCAL_PATH)/prebuilt/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     $(LOCAL_PATH)/prebuilt/init.qcom.baseband.sh:system/etc/init.qcom.baseband.sh
 
 ## Configs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/config/atcmd_virtual_kbd.kl:system/usr/keylayout/atcmd_virtual_kbd.kl \
     $(LOCAL_PATH)/config/ffa-keypad_qwerty.kl:system/usr/keylayout/ffa-keypad_qwerty.kl \
     $(LOCAL_PATH)/config/pmic8058_pwrkey.kl:system/usr/keylayout/pmic8058_pwrkey.kl \
@@ -97,7 +94,8 @@ PRODUCT_PACKAGES += \
     libOmxCore
 
 PRODUCT_PACKAGES += \
-    hwaddrs
+    hwaddrs \
+    firmware_init
 
 # Charger mode
 PRODUCT_PACKAGES += \
